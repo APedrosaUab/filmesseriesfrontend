@@ -409,11 +409,12 @@ export default {
       return parsedDate.toISOString().split('T')[0];
     },
     generateStars(avaliacao) {
-      let starsHtml = '';
+      let stars = '';
       for (let i = 0; i < 5; i++) {
-        starsHtml += `<i class="fas fa-star${i < avaliacao ? ' active' : ''}"></i>`;
+        stars += i < avaliacao ? <i class="fas fa-star active"></i> : <i class="fas fa-star notActive"></i>;
       }
-      return starsHtml;
+      <i class="fas fa-star active"></i>
+      return stars;
     },
 
     abrirModalEdicao(item, type, action) {
@@ -544,10 +545,6 @@ h4,
   cursor: pointer;
 }
 
-.anonimoLabel {
-  line-height: 30px;
-}
-
 .lightblue {
   color: lightblue;
   font-weight: 600;
@@ -561,11 +558,11 @@ h4,
   padding: 0;
 }
 
-.star {
+.fas.fa-star.active.notActive {
   color: lightgray;
 }
 
-.star.active {
+.fas.fa-star.active {
   color: yellow;
 }
 
