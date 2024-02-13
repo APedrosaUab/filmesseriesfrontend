@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="genreSelectMovies">Género Filme:</label>
         <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
-          <option v-for="genreMovies in genreOptionsMovies" :value="genre.id" :key="genre.id">
+          <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
             {{ genreMovies.name }}
           </option>
         </select>
@@ -23,7 +23,7 @@
       <div class="form-group">
         <label for="genreSelectSeries">Género de Série:</label>
         <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
-          <option v-for="genreSeries in genreOptionsSeries" :value="genre.id" :key="genre.id">
+          <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
             {{ genreSeries.name }}
           </option>
         </select>
