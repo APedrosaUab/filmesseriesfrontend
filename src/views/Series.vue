@@ -1,5 +1,6 @@
 <template>
   <div class="series">
+    <h2>Séries</h2>
     <div class="container py-4">
       <div class="row">
         <div class="col-12 col-md-4 col-lg-3 mb-4" v-for="serie in series" :key="serie.id">
@@ -80,6 +81,12 @@ export default {
 .content {
   width: 100%;
   max-width: 800px;
+}
+
+h2 {
+  color: rgb(170, 1, 1);
+  font-weight: 600;
+  padding: 0 20px 20px 20px;
 }
 
 .img-fluid {

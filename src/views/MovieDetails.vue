@@ -121,7 +121,6 @@ export default {
       try {
         const response = await fetch(url, options);
         const data = await response.json();
-        console.log(data);
         this.movie = data;
       } catch (err) {
         console.error(err);

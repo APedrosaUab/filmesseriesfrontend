@@ -14,7 +14,7 @@
         <div class="col-12" v-if="isEditing">
           <div class="avatar-selection row">
             <span>Selecione um avatar:</span>
-            <div v-for="avatar in avataresDisponiveis" :key="avatar" class="avatar-option col-2">
+            <div v-for="avatar in avataresDisponiveis" :key="avatar" class="avatar-option col-4 col-md-2">
               <img :src="`/assets/images/avatars/${avatar}.png`" :alt="`Avatar ${avatar}`" @click="selectAvatar(avatar)">
             </div>
           </div>
