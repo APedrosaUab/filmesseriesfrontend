@@ -349,6 +349,10 @@ export default {
   color: gold;
 }
 
+.detailsContent a {
+  color: goldenrod!important;
+}
+
 .btnModal {
   width: 180px;
   margin: 10px;
