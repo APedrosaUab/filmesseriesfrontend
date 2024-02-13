@@ -57,7 +57,7 @@ export default {
   isActiveSeries() {
     return this.$route.path === '/Series' || this.$route.path.startsWith('/series/');
   }
-}
+},
 
   methods: {
     toggleMenu() {
