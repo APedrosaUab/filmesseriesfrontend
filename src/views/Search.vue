@@ -14,13 +14,11 @@
         <div class="col-6">
           <div class="form-group">
             <label for="genreSelectMovies" class="labelGenre">Género de Filme:</label>
-            <div class="select-wrapper">
-              <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
-                <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
-                  {{ genreMovies.name }}
-                </option>
-              </select>
-            </div>
+            <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
+              <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
+                {{ genreMovies.name }}
+              </option>
+            </select>
           </div>
 
           <button @click="searchByGenreMovies" class="btn btn-movie">Pesquisar Filme</button>
@@ -29,13 +27,11 @@
 
           <div class="form-group">
             <label for="genreSelectSeries" class="labelGenre">Género de Série:</label>
-            <div class="select-wrapper">
-              <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
-                <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
-                  {{ genreSeries.name }}
-                </option>
-              </select>
-            </div>
+            <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
+              <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
+                {{ genreSeries.name }}
+              </option>
+            </select>
           </div>
           <button @click="searchByGenreSeries" class="btn btn-series">Pesquisar Série</button>
         </div>
@@ -388,23 +384,9 @@ export default {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 .labelGenre {
   margin-top: 10px;
-  margin-bottom: 10px;
   width: 100%;
-  font-size: 10px;
-}
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.select-wrapper::after {
-  content: '\25BC';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
 }
 </style>
