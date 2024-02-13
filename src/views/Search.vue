@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-6">
           <div class="form-group">
-            <label for="genreSelectMovies" class="mt-2">Selecione o Género de Filme</label>
+            <label for="genreSelectMovies" class="labelGenre">Género de Filme:</label>
             <div class="select-wrapper">
               <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
                 <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
@@ -28,7 +28,7 @@
         <div class="col-6">
 
           <div class="form-group">
-            <label for="genreSelectSeries" class="mt-2">Selecione o Género de Série</label>
+            <label for="genreSelectSeries" class="labelGenre">Género de Série:</label>
             <div class="select-wrapper">
               <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
                 <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
@@ -383,12 +383,17 @@ export default {
 
 #genreSelectMovies,
 #genreSelectSeries {
-  max-width: 250px;
+  max-width: 90%;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.labelGenre {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 10px;
+}
 .select-wrapper {
   position: relative;
   display: inline-block;
