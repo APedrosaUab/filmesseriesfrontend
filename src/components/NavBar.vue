@@ -2,15 +2,15 @@
   <nav class="navbar navbar-dark navbar-expand-lg bg-dark row">
     <div class="d-none col-lg-1"></div>
     <div class="col-2 col-lg-1">
-    <button class="navbar-toggler" type="button" @click="toggleMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" @click="toggleMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
     <div class="col-8 col-lg-10">
-    <router-link to="/home" class="navbar-brand mx-auto noBgColor">
-      <img src="@/assets/logo.png" alt="Logo" class="navbar-logo">
-    </router-link>
-  </div>
+      <router-link to="/home" class="navbar-brand mx-auto noBgColor">
+        <img src="@/assets/logo.png" alt="Logo" class="navbar-logo">
+      </router-link>
+    </div>
     <div class="navbar-nav ml-auto col-2 col-lg-1" v-if="isLoggedIn">
       <div class="w-100">
         <img v-if="avatarUser" :src="`/assets/images/avatars/${avatarUser}.png`" alt="avatar" class="avatarUserNav">
@@ -27,10 +27,10 @@
           <router-link class="nav-link" to="/Profile">Perfil</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
-          <router-link class="nav-link" to="/Movies">Filmes</router-link>
+          <router-link :class="['nav-link', { 'router-link-active': isActiveMovies }]" to="/Movies">Filmes</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
-          <router-link class="nav-link" to="/Series">Series</router-link>
+          <router-link :class="['nav-link', { 'router-link-active': isActiveSeries }]" to="/Series">Series</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
           <router-link class="nav-link" to="/Search">Pesquisa</router-link>
@@ -49,6 +49,14 @@ export default {
       username: localStorage.getItem('username') || 'Utilizador',
       avatarUser: localStorage.getItem('avatarUser'),
     };
+  },
+  computed: {
+    isActiveMovies() {
+      return this.$route.path === '/Movies' || this.$route.path.startsWith('/Movies/');
+    },
+    isActiveSeries() {
+      return this.$route.path === '/Series' || this.$route.path.startsWith('/Series/');
+    }
   },
   methods: {
     toggleMenu() {
@@ -73,13 +81,14 @@ export default {
   max-width: 100%;
   margin: auto;
 }
+
 .navbar-nav {
   padding-right: 10px;
 }
 
 .navbar-logo {
   height: 40px;
-  background-color: unset!important;
+  background-color: unset !important;
 }
 
 .navbar-toggler {
@@ -100,40 +109,35 @@ export default {
 .nav-item {
   width: 200px;
   border: solid 1px rgba(255, 255, 255, 0.1);
-  background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity));
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
 }
 
-nav a.router-link-exact-active
-{
+nav a.router-link-exact-active {
   color: gainsboro;
 }
 
-.nav-link:hover
-{
+.nav-link:hover {
   background: lightblue;
   color: #000;
 }
 
 .noBgColor {
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
 
-nav a.router-link-exact-active
-{
+nav a.router-link-exact-active {
   background-color: cadetblue;
   color: #fff;
 }
 
-a.logoutLink
-{
+a.logoutLink {
   font-size: 11px;
   color: rgb(170, 1, 1);
   padding: 0;
   cursor: pointer;
 }
 
-a.logoutLink:hover
-{
+a.logoutLink:hover {
   background-color: rgb(170, 1, 1);
   color: white;
 }
@@ -161,9 +165,8 @@ a.logoutLink:hover
 
 @media screen and (min-width: 992px) {
 
-  .navbar.navbar-dark.navbar-expand-lg.bg-dark
-{
-  margin-bottom: 50px;
-}
+  .navbar.navbar-dark.navbar-expand-lg.bg-dark {
+    margin-bottom: 50px;
+  }
 }
 </style>
