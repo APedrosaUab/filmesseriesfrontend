@@ -1,6 +1,6 @@
 <template>
   <div class="serie-details" v-if="serie">
-    <div class="container py-4">
+    <div class="container">
       <h2 class="visibleMobile">{{ serie.name || 'não disponível' }}</h2>
       <div class="row m-auto">
         <div class="col-md-4 col-12">

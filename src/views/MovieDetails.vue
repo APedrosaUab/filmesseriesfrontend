@@ -1,6 +1,6 @@
 <template>
   <div class="movie-details" v-if="movie">
-    <div class="container py-4">
+    <div class="container">
       <div class="row m-auto">
         <h2 class="visibleMobile">{{ movie.title || 'não disponível' }}</h2>
         <div class="col-md-4 col-12">
