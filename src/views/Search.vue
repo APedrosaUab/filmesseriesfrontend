@@ -37,6 +37,8 @@
         </div>
       </div>
 
+      <div class="m-2"><h4>Pesquisou por: {{searchText}}</h4></div>
+
       <div class="search-results">
         <div class="search-result-card" v-for="item in searchResults" :key="item.id">
           <router-link :to="currentMediaType === 'movie' ? `/movies/${item.id}` : `/series/${item.id}`">
@@ -59,6 +61,7 @@ export default {
       currentMediaType: '',
       selectedGenreMovies: 28,
       selectedGenreSeries: 16,
+      searchText: '',
       genreOptionsMovies: [
         {
           "id": 28,
@@ -225,6 +228,8 @@ export default {
 
       const url = `https://api.themoviedb.org/3/search/${type}?include_adult=false&language=en-US&page=1&query=${encodeURIComponent(this.searchTerm)}`;
 
+      searchText = searchTerm;
+
       try {
         const response = await fetch(url, options);
         const data = await response.json();
@@ -253,6 +258,8 @@ export default {
 
       const url = `https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${this.selectedGenreMovies}`;
 
+      searchText = 'Categoria de Filmes';
+
       try {
         const response = await fetch(url, options);
         const data = await response.json();
@@ -271,6 +278,8 @@ export default {
       };
 
       const url = `https://api.themoviedb.org/3/discover/tv?language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${this.selectedGenreSeries}`;
+
+      searchText = 'Categoria de Séries';
 
       try {
         const response = await fetch(url, options);
