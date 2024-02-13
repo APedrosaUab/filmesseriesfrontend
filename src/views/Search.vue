@@ -82,7 +82,6 @@ export default {
   background-image: url('~@/assets/images/landingPage.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
 }
 
 .search-container {
