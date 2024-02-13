@@ -67,7 +67,7 @@
         </div>
         <div class="col-12 text-left">
           <h4 class="lightblue">Filmes a Ver</h4>
-          <table v-if="filmesAVer.length" class="table table-striped">
+          <table v-if="filmesAVer.length" class="table table-striped table-custom">
             <thead>
               <tr>
                 <th>Nome</th>
@@ -136,7 +136,7 @@
 
         <div class="col-12 text-left">
           <h4 class="lightblue">Séries a Ver</h4>
-          <table v-if="seriesAVer.length" class="table table-striped">
+          <table v-if="seriesAVer.length" class="table table-striped table-custom">
             <thead>
               <tr>
                 <th>Nome</th>
@@ -170,7 +170,7 @@
         </div>
         <div class="col-12 text-left">
           <h4 class="lightblue">Series Vistas</h4>
-          <table v-if="seriesVistos.length" class="table table-striped">
+          <table v-if="seriesVistos.length" class="table table-striped table-custom">
             <thead>
               <tr>
                 <th>Nome</th>
