@@ -26,7 +26,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'ResetPassword',
+  name: 'RecoverPassword',
   data() {
     return {
       newPassword: '',
