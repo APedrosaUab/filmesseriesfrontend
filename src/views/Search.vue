@@ -3,8 +3,8 @@
     <div class="search-container">
       <h3 class="search-title">Pesquisar</h3>
       <div class="search-form">
-        <input type="text" id="pesquisaFilmeSerie" v-model="searchTerm" placeholder="Pesquisar por filme ou série"
-          class="search-input">
+        <input type="text" id="pesquisaFilmeSerie" v-model="searchTerm"
+          placeholder="Pesquisar por título do filme ou série" class="search-input">
         <div class="search-buttons">
           <button @click="searchMovies" class="btn btn-movie">Pesquisar Filme</button>
           <button @click="searchSeries" class="btn btn-series">Pesquisar Série</button>
@@ -12,29 +12,34 @@
       </div>
       <div class="row">
         <div class="col-6">
-      <div class="form-group">
-        <label for="genreSelectMovies">Género Filme:</label>
-        <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
-          <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
-            {{ genreMovies.name }}
-          </option>
-        </select>
-      </div>
-      <button @click="searchByGenreMovies" class="btn btn-movie">Pesquisar Filme</button>
-    </div>
-    <div class="col-6">
+          <div class="form-group">
+            <label for="genreSelectMovies" class="mt-2">Selecione o Género de Filme</label>
+            <div class="select-wrapper">
+              <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
+                <option v-for="genreMovies in genreOptionsMovies" :value="genreMovies.id" :key="genreMovies.id">
+                  {{ genreMovies.name }}
+                </option>
+              </select>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="genreSelectSeries">Género de Série:</label>
-        <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
-          <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
-            {{ genreSeries.name }}
-          </option>
-        </select>
+          <button @click="searchByGenreMovies" class="btn btn-movie">Pesquisar Filme</button>
+        </div>
+        <div class="col-6">
+
+          <div class="form-group">
+            <label for="genreSelectSeries" class="mt-2">Selecione o Género de Série</label>
+            <div class="select-wrapper">
+              <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
+                <option v-for="genreSeries in genreOptionsSeries" :value="genreSeries.id" :key="genreSeries.id">
+                  {{ genreSeries.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button @click="searchByGenreSeries" class="btn btn-series">Pesquisar Série</button>
+        </div>
       </div>
-      <button @click="searchByGenreSeries" class="btn btn-series">Pesquisar Série</button>
-    </div>
-  </div>
 
       <div class="search-results">
         <div class="search-result-card" v-for="item in searchResults" :key="item.id">
@@ -59,149 +64,149 @@ export default {
       selectedGenreSeries: '',
       selectedGenreMovies: '',
       genreOptionsMovies: [
-    {
-      "id": 28,
-      "name": "Action"
-    },
-    {
-      "id": 12,
-      "name": "Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 14,
-      "name": "Fantasy"
-    },
-    {
-      "id": 36,
-      "name": "History"
-    },
-    {
-      "id": 27,
-      "name": "Horror"
-    },
-    {
-      "id": 10402,
-      "name": "Music"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10749,
-      "name": "Romance"
-    },
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
-      "id": 10770,
-      "name": "TV Movie"
-    },
-    {
-      "id": 53,
-      "name": "Thriller"
-    },
-    {
-      "id": 10752,
-      "name": "War"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ],
-  genreOptionsSeries: [
-    {
-      "id": 10759,
-      "name": "Action & Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 10762,
-      "name": "Kids"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10763,
-      "name": "News"
-    },
-    {
-      "id": 10764,
-      "name": "Reality"
-    },
-    {
-      "id": 10765,
-      "name": "Sci-Fi & Fantasy"
-    },
-    {
-      "id": 10766,
-      "name": "Soap"
-    },
-    {
-      "id": 10767,
-      "name": "Talk"
-    },
-    {
-      "id": 10768,
-      "name": "War & Politics"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ]
+        {
+          "id": 28,
+          "name": "Action"
+        },
+        {
+          "id": 12,
+          "name": "Adventure"
+        },
+        {
+          "id": 16,
+          "name": "Animation"
+        },
+        {
+          "id": 35,
+          "name": "Comedy"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        },
+        {
+          "id": 99,
+          "name": "Documentary"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10751,
+          "name": "Family"
+        },
+        {
+          "id": 14,
+          "name": "Fantasy"
+        },
+        {
+          "id": 36,
+          "name": "History"
+        },
+        {
+          "id": 27,
+          "name": "Horror"
+        },
+        {
+          "id": 10402,
+          "name": "Music"
+        },
+        {
+          "id": 9648,
+          "name": "Mystery"
+        },
+        {
+          "id": 10749,
+          "name": "Romance"
+        },
+        {
+          "id": 878,
+          "name": "Science Fiction"
+        },
+        {
+          "id": 10770,
+          "name": "TV Movie"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        },
+        {
+          "id": 10752,
+          "name": "War"
+        },
+        {
+          "id": 37,
+          "name": "Western"
+        }
+      ],
+      genreOptionsSeries: [
+        {
+          "id": 10759,
+          "name": "Action & Adventure"
+        },
+        {
+          "id": 16,
+          "name": "Animation"
+        },
+        {
+          "id": 35,
+          "name": "Comedy"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        },
+        {
+          "id": 99,
+          "name": "Documentary"
+        },
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10751,
+          "name": "Family"
+        },
+        {
+          "id": 10762,
+          "name": "Kids"
+        },
+        {
+          "id": 9648,
+          "name": "Mystery"
+        },
+        {
+          "id": 10763,
+          "name": "News"
+        },
+        {
+          "id": 10764,
+          "name": "Reality"
+        },
+        {
+          "id": 10765,
+          "name": "Sci-Fi & Fantasy"
+        },
+        {
+          "id": 10766,
+          "name": "Soap"
+        },
+        {
+          "id": 10767,
+          "name": "Talk"
+        },
+        {
+          "id": 10768,
+          "name": "War & Politics"
+        },
+        {
+          "id": 37,
+          "name": "Western"
+        }
+      ]
     };
   },
   methods: {
@@ -374,5 +379,27 @@ export default {
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+#genreSelectMovies,
+#genreSelectSeries {
+  max-width: 250px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper::after {
+  content: '\25BC';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 </style>
