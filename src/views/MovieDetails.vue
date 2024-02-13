@@ -351,6 +351,7 @@ export default {
 
 .detailsContent a {
   color: goldenrod!important;
+  text-decoration: none;
 }
 
 .btnModal {
@@ -375,11 +376,17 @@ export default {
   .visibleMobile {
   display: none;
 }
+.container {
+  margin-top: 100px;
+}
 }
 
 @media screen and (max-width: 991px) {
   .visibleDesktop {
   display: none;
 }
+.container {
+    margin-top: 10px;
+  }
 }
 </style>

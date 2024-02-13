@@ -51,13 +51,15 @@ export default {
     };
   },
   computed: {
-  isActiveMovies() {
-    return this.$route.path === '/Movies' || this.$route.path.startsWith('/movies/');
+    isActiveMovies() {
+      const path = this.$route.path.toLowerCase();
+      return path === '/movies' || path.startsWith('/movies/');
+    },
+    isActiveSeries() {
+      const path = this.$route.path.toLowerCase();
+      return path === '/series' || path.startsWith('/series/');
+    }
   },
-  isActiveSeries() {
-    return this.$route.path === '/Series' || this.$route.path.startsWith('/series/');
-  }
-},
 
   methods: {
     toggleMenu() {
