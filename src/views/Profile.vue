@@ -557,12 +557,12 @@ h4,
   padding: 0;
 }
 
-.fas.fa-star.active.notActive {
-  color: lightgray;
+.fas.fa-star.notActive {
+  color: lightgray!important;
 }
 
 .fas.fa-star.active {
-  color: yellow;
+  color: yellow!important;
 }
 
 /* Teste Tabela*/
@@ -588,7 +588,7 @@ h4,
 }
 
 .table-custom .btnEdActions {
-  margin: 0 5px;
+  margin: 5px;
 }
 
 .table-custom .fas {
