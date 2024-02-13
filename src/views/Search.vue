@@ -107,7 +107,7 @@ export default {
 }
 
 .bg-search {
-  background-image: url('/img/landingPage.6f3744f1.jpg');
+  background-image: url('/img/landingPage.jpg');
   background-position: center;
 }
 
