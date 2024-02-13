@@ -409,11 +409,11 @@ export default {
       return parsedDate.toISOString().split('T')[0];
     },
     generateStars(avaliacao) {
-      let stars = '';
+      let starsHtml = '';
       for (let i = 0; i < 5; i++) {
-        stars += i < avaliacao ? '&#9733;' : '&#9734;';
+        starsHtml += `<i class="fas fa-star${i < avaliacao ? ' active' : ''}"></i>`;
       }
-      return stars;
+      return starsHtml;
     },
 
     abrirModalEdicao(item, type, action) {
@@ -561,6 +561,14 @@ h4,
   padding: 0;
 }
 
+.star {
+  color: lightgray;
+}
+
+.star.active {
+  color: yellow;
+}
+
 /* Teste Tabela*/
 .table-custom {
   width: 100%;
@@ -576,7 +584,8 @@ h4,
   background-color: #f2f2f2;
 }
 
-.table-custom td, .table-custom th {
+.table-custom td,
+.table-custom th {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: left;
