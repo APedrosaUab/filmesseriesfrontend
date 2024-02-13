@@ -31,7 +31,7 @@ export default {
   methods: {
     async recoverPassword() {
   try {
-    await axios.post('http://localhost:3000/forgot/recuperar-password', { 
+    await axios.post(`${process.env.VUE_APP_BACKEND_URL}/forgot/recuperar-password`, { 
       email: this.email 
     });
     alert("Instruções de recuperação enviadas para o seu e-mail.");

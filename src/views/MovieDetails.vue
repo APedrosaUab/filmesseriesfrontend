@@ -141,7 +141,7 @@ export default {
       };
 
       try {
-        await axios.post('http://localhost:3000/filmes/adicionar', filmeData);
+        await axios.post(`${process.env.VUE_APP_BACKEND_URL}/filmes/adicionar`, filmeData);
         console.log('Filme adicionado ou atualizado com sucesso.');
       } catch (err) {
         console.error('Erro ao adicionar ou atualizar o filme:', err);
@@ -152,7 +152,7 @@ export default {
       const userId = localStorage.getItem('id_utilizador');
       const movieId = this.movie.id;
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-filme/status/${userId}/${movieId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/status/${userId}/${movieId}`);
         this.movie.addedToList = response.data.added;
         this.movie.watched = response.data.watched;
         this.movie.comment = response.data.comentario;
@@ -164,7 +164,7 @@ export default {
     async fetchComentariosFilmes() {
       const filmesId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/filme/comentarios/${filmesId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/filme/comentarios/${filmesId}`);
         this.comentarios = response.data.comentarios;
       } catch (error) {
         console.error("Erro ao obter comentários do filme:", error);
@@ -193,7 +193,7 @@ export default {
       }
 
       try {
-        await axios.post('http://localhost:3000/utilizador-filme/adicionar', {
+        await axios.post(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/adicionar`, {
           id_utilizador: userId,
           id_filme: movieId,
           visto: visto,
@@ -222,7 +222,7 @@ export default {
       }
 
       try {
-        await axios.put('http://localhost:3000/utilizador-filme/update', {
+        await axios.put(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/update`, {
           id_utilizador: userId,
           id_filme: movieId,
           avaliacao: this.userRating,

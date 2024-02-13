@@ -53,7 +53,7 @@ export default {
   methods: {
     async login() {
       try {
-        const loginResponse = await axios.post('http://localhost:3000/login', {
+        const loginResponse = await axios.post(`${process.env.VUE_APP_BACKEND_URL}/login`, {
           username: this.username,
           password: this.password
         });

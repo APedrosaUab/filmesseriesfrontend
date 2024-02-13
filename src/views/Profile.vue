@@ -275,7 +275,7 @@ export default {
   methods: {
     async fetchUserProfile() {
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador/${this.id_utilizador}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador/${this.id_utilizador}`);
         this.nome = response.data.nome;
         this.apelido = response.data.apelido;
         this.username = response.data.username;
@@ -299,7 +299,7 @@ export default {
     },
     async updateProfile() {
       try {
-        await axios.put(`http://localhost:3000/utilizador/${this.id_utilizador}`, {
+        await axios.put(`${process.env.VUE_APP_BACKEND_URL}/utilizador/${this.id_utilizador}`, {
           nome: this.nome,
           apelido: this.apelido,
           username: this.username,
@@ -336,7 +336,7 @@ export default {
     async fetchFilmesVistos() {
       const userId = localStorage.getItem('id_utilizador');
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-filme/visto/${userId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/visto/${userId}`);
         this.filmesVistos = response.data;
       } catch (error) {
         console.error('Erro ao obter lista de filmes vistos:', error);
@@ -346,7 +346,7 @@ export default {
     async fetchFilmesAVer() {
       const userId = localStorage.getItem('id_utilizador');
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-filme/aver/${userId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/aver/${userId}`);
         this.filmesAVer = response.data;
       } catch (error) {
         console.error('Erro ao obter lista de filmes a ver:', error);
@@ -355,7 +355,7 @@ export default {
     async fetchSeriesVistas() {
       const userId = localStorage.getItem('id_utilizador');
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-serie/visto/${userId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/visto/${userId}`);
         this.seriesVistos = response.data;
       } catch (error) {
         console.error('Erro ao obter lista de séries vistas:', error);
@@ -364,7 +364,7 @@ export default {
     async fetchSeriesAVer() {
       const userId = localStorage.getItem('id_utilizador');
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-serie/aver/${userId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/aver/${userId}`);
         this.seriesAVer = response.data;
       } catch (error) {
         console.error('Erro ao obter lista de séries a ver:', error);
@@ -373,7 +373,7 @@ export default {
 
     async eliminarFilme(filmeId) {
       try {
-        await axios.delete(`http://localhost:3000/utilizador-filme/eliminar/${filmeId}`);
+        await axios.delete(`${process.env.VUE_APP_BACKEND_URL}/utilizador-filme/eliminar/${filmeId}`);
         this.fetchFilmesAVer();
         this.fetchFilmesVistos();
       } catch (error) {
@@ -383,7 +383,7 @@ export default {
 
     async eliminarSerie(serieId) {
       try {
-        await axios.delete(`http://localhost:3000/utilizador-serie/eliminar/${serieId}`);
+        await axios.delete(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/eliminar/${serieId}`);
         this.fetchSeriesAVer();
         this.fetchSeriesVistas();
       } catch (error) {
@@ -447,7 +447,7 @@ export default {
         payload.id_serie = this.editData.id_serie;
       }
       try {
-        await axios.put(`http://localhost:3000${url}`, payload);
+        await axios.put(`${process.env.VUE_APP_BACKEND_URL}${url}`, payload);
 
         alert("Avaliação enviada com sucesso.");
         this.showModal = false;

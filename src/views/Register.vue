@@ -109,7 +109,7 @@ export default {
       }
 
       try {
-        await axios.post('http://localhost:3000/utilizadores', {
+        await axios.post(`${process.env.VUE_APP_BACKEND_URL}/utilizadores`, {
           nome: this.nome,
           apelido: this.apelido,
           username: this.username,

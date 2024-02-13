@@ -43,7 +43,7 @@ export default {
   // Certifique-se de que token é passado corretamente na URL
   const token = this.$route.params.token; // Pegue o token dos parâmetros da rota
   try {
-    await axios.post(`http://localhost:3000/recover/redefinir-password/${token}`, {
+    await axios.post(`${process.env.VUE_APP_BACKEND_URL}/recover/redefinir-password/${token}`, {
       newPassword: this.newPassword,
       confirmNewPassword: this.confirmNewPassword,
     });

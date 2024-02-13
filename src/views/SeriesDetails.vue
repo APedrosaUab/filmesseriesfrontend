@@ -139,7 +139,7 @@ export default {
         avaliacao_api: this.serie.vote_average
       };
       try {
-        await axios.post('http://localhost:3000/series/adicionar', serieData);
+        await axios.post(`${process.env.VUE_APP_BACKEND_URL}/series/adicionar`, serieData);
         console.log('Série adicionada ou atualizada com sucesso.');
       } catch (err) {
         console.error('Erro ao adicionar ou atualizar série:', err);
@@ -150,7 +150,7 @@ export default {
       const userId = localStorage.getItem('id_utilizador');
       const seriesId = this.serie.id;
       try {
-        const response = await axios.get(`http://localhost:3000/utilizador-serie/status/${userId}/${seriesId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/status/${userId}/${seriesId}`);
         this.serie.addedToList = response.data.added;
         this.serie.watched = response.data.watched;
         this.serie.comment = response.data.comentario;
@@ -162,7 +162,7 @@ export default {
     async fetchComentariosSerie() {
       const seriesId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/serie/comentarios/${seriesId}`);
+        const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/serie/comentarios/${seriesId}`);
         this.comentarios = response.data.comentarios;
       } catch (error) {
         console.error("Erro ao obter comentários da série:", error);
@@ -192,7 +192,7 @@ export default {
       }
 
       try {
-        await axios.post('http://localhost:3000/utilizador-serie/adicionar', {
+        await axios.post(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/adicionar`, {
           id_utilizador: userId,
           id_serie: seriesId,
           visto: visto,
@@ -221,7 +221,7 @@ export default {
       }
 
       try {
-        await axios.put('http://localhost:3000/utilizador-serie/update', {
+        await axios.put(`${process.env.VUE_APP_BACKEND_URL}/utilizador-serie/update`, {
           id_utilizador: userId,
           id_serie: seriesId,
           avaliacao: this.userRating,
