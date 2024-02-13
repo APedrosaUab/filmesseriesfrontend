@@ -557,12 +557,12 @@ h4,
   padding: 0;
 }
 
-.fas.fa-star {
+.fas.fa-star, .fa-star::before {
   color: lightgray!important;
 }
 
-.fas.fa-star.active {
-  color: yellow!important;
+.fas.fa-star.active, .fa-star.active::before {
+  color: gold!important;
 }
 
 /* Teste Tabela*/
