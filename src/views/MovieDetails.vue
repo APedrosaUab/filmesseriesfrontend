@@ -2,6 +2,7 @@
   <div class="movie-details" v-if="movie">
     <div class="container py-4">
       <div class="row m-auto">
+        <h2 class="visibleMobile">{{ movie.title || 'não disponível' }}</h2>
         <div class="col-md-4 col-12">
           <img :src="getImageUrl(movie.poster_path)" alt="Poster do Filme" class="img-fluid mb-3" />
           <div class="d-flex justify-content-around">
@@ -15,7 +16,7 @@
           </div>
         </div>
         <div class="col-md-8 col-12 detailsContent">
-          <h2>{{ movie.title || 'não disponível' }}</h2>
+          <h2 class="visibleDesktop">{{ movie.title || 'não disponível' }}</h2>
           <p><strong>Título original:</strong> {{ movie.original_title || 'não disponível' }}</p>
           <p><strong>Língua original:</strong> {{ movie.original_language || 'não disponível' }}</p>
           <p><strong>TagLine:</strong> {{ movie.tagline || 'não disponível' }}</p>
@@ -359,5 +360,17 @@ export default {
   width: 50px;
   height: 50px;
   cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .visibleMobile {
+  display: none;
+}
+}
+
+@media screen and (max-width: 991px) {
+  .visibleDesktop {
+  display: none;
+}
 }
 </style>
