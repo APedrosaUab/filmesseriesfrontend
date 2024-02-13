@@ -3,12 +3,33 @@
     <div class="search-container">
       <h3 class="search-title">Pesquisar</h3>
       <div class="search-form">
-        <input type="text" id="pesquisaFilmeSerie" v-model="searchTerm" placeholder="Pesquisar por filme ou série" class="search-input">
+        <input type="text" id="pesquisaFilmeSerie" v-model="searchTerm" placeholder="Pesquisar por filme ou série"
+          class="search-input">
         <div class="search-buttons">
           <button @click="searchMovies" class="btn btn-movie">Pesquisar Filme</button>
           <button @click="searchSeries" class="btn btn-series">Pesquisar Série</button>
         </div>
       </div>
+      <div class="form-group">
+        <label for="genreSelectMovies">Género Filme:</label>
+        <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
+          <option v-for="genreMovies in genreOptionsMovies" :value="genre.id" :key="genre.id">
+            {{ genreMovies.name }}
+          </option>
+        </select>
+      </div>
+      <button @click="searchByGenreMovies" class="btn btn-primary">Pesquisar Filme</button>
+
+      <div class="form-group">
+        <label for="genreSelectSeries">Género de Série:</label>
+        <select id="genreSelectSeries" v-model="selectedGenreSeries" class="form-control">
+          <option v-for="genreSeries in genreOptionsSeries" :value="genre.id" :key="genre.id">
+            {{ genreSeries.name }}
+          </option>
+        </select>
+      </div>
+      <button @click="searchByGenreSeries" class="btn btn-primary">Pesquisar Série</button>
+
       <div class="search-results">
         <div class="search-result-card" v-for="item in searchResults" :key="item.id">
           <router-link :to="currentMediaType === 'movie' ? `/movies/${item.id}` : `/series/${item.id}`">
@@ -29,6 +50,152 @@ export default {
       searchTerm: '',
       searchResults: [],
       currentMediaType: '',
+      selectedGenreSeries: '',
+      selectedGenreMovies: '',
+      genreOptionsMovies: [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 99,
+      "name": "Documentary"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy"
+    },
+    {
+      "id": 36,
+      "name": "History"
+    },
+    {
+      "id": 27,
+      "name": "Horror"
+    },
+    {
+      "id": 10402,
+      "name": "Music"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 10749,
+      "name": "Romance"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 10770,
+      "name": "TV Movie"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+    },
+    {
+      "id": 37,
+      "name": "Western"
+    }
+  ],
+  genreOptionsSeries: [
+    {
+      "id": 10759,
+      "name": "Action & Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 99,
+      "name": "Documentary"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 10762,
+      "name": "Kids"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 10763,
+      "name": "News"
+    },
+    {
+      "id": 10764,
+      "name": "Reality"
+    },
+    {
+      "id": 10765,
+      "name": "Sci-Fi & Fantasy"
+    },
+    {
+      "id": 10766,
+      "name": "Soap"
+    },
+    {
+      "id": 10767,
+      "name": "Talk"
+    },
+    {
+      "id": 10768,
+      "name": "War & Politics"
+    },
+    {
+      "id": 37,
+      "name": "Western"
+    }
+  ]
     };
   },
   methods: {
@@ -68,6 +235,45 @@ export default {
       }
     },
 
+    async searchByGenreMovies() {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkY2ViMzE5OWFmN2JiODNkY2NmOWEyZDg3MWM4ZTc1YSIsInN1YiI6IjY1YjRmMGI2MWM2MzViMDE3YjEzMzRmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D5ameSCbyYN4uMkJUtYjPbPBgHC6wN7oBGyM4HpSUYI'
+        }
+      };
+
+      const url = `https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${this.selectedGenreMovies}`;
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        this.searchResults = data.results.filter(result => result.poster_path !== null);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    async searchByGenreSeries() {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkY2ViMzE5OWFmN2JiODNkY2NmOWEyZDg3MWM4ZTc1YSIsInN1YiI6IjY1YjRmMGI2MWM2MzViMDE3YjEzMzRmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D5ameSCbyYN4uMkJUtYjPbPBgHC6wN7oBGyM4HpSUYI'
+        }
+      };
+
+      const url = `https://api.themoviedb.org/3/discover/tv?language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${this.selectedGenreSeries}`;
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        this.searchResults = data.results.filter(result => result.poster_path !== null);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
     getImageUrl(path) {
       return path ? `https://image.tmdb.org/t/p/w500${path}` : '';
     }
@@ -79,9 +285,10 @@ export default {
 <style scoped>
 .search-page {
   padding: 20px;
-  background-image: url('~@/assets/images/landingPage.jpg');
+  /* background-image: url('~@/assets/images/landingPage.jpg'); */
   background-size: cover;
   background-position: center;
+  min-height: 100vh;
 }
 
 .search-container {
@@ -117,7 +324,8 @@ export default {
   gap: 10px;
 }
 
-.btn-movie, .btn-series {
+.btn-movie,
+.btn-series {
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -145,7 +353,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -161,5 +369,4 @@ export default {
   height: 300px;
   object-fit: cover;
 }
-
 </style>
