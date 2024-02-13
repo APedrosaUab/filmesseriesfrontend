@@ -152,4 +152,11 @@ export default {
   border-radius: 5px;
 }
 
+@media screen and (min-width: 992px) {
+  .swiper-slide {
+  height: 350px;
+  width: 200px !important;
+}
+}
+
 </style>

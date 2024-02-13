@@ -1,7 +1,7 @@
 <template>
   <div class="series">
-    <h2>Séries</h2>
     <div class="container py-4">
+      <h2 class="visibleMobile">Séries</h2>
       <div class="row">
         <div class="col-12 col-md-4 col-lg-3 mb-4" v-for="serie in series" :key="serie.id">
           <router-link :to="`/series/${serie.id}`" class="serie-item">
@@ -90,7 +90,7 @@ h2 {
 }
 
 .img-fluid {
-  max-width: 250px;
+  max-width: 100%;
   border: solid 6px #fff;
   margin: 6px;
   height: 100%;
@@ -106,4 +106,11 @@ h2 {
 .serie-item:hover {
   text-decoration: none;
 }
+
+@media screen and (min-width: 992px) {
+  .visibleMobile {
+  display: none;
+}
+}
+
 </style>
