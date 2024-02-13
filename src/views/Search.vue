@@ -13,9 +13,6 @@
         <div class="search-result-card" v-for="item in searchResults" :key="item.id">
           <router-link :to="currentMediaType === 'movie' ? `/movies/${item.id}` : `/series/${item.id}`">
             <img :src="getImageUrl(item.poster_path)" alt="Poster" class="result-image" />
-            <div class="result-info">
-              <h5 class="result-title">{{ item.title || item.name }}</h5>
-            </div>
           </router-link>
         </div>
       </div>
@@ -94,6 +91,7 @@ export default {
   border-radius: 10px;
   max-width: 800px;
   margin: auto;
+  margin-top: 80px;
 }
 
 .search-title {
@@ -165,12 +163,4 @@ export default {
   object-fit: cover;
 }
 
-.result-info {
-  padding: 10px;
-}
-
-.result-title {
-  margin: 0;
-  font-size: 18px;
-}
 </style>
