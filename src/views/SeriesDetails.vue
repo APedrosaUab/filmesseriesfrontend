@@ -1,8 +1,8 @@
 <template>
   <div class="serie-details" v-if="serie">
     <div class="container py-4">
+      <h2 class="visibleMobile">{{ serie.name || 'não disponível' }}</h2>
       <div class="row m-auto">
-        <h2 class="visibleMobile">{{ serie.name || 'não disponível' }}</h2>
         <div class="col-md-4 col-12">
           <img :src="getImageUrl(serie.poster_path)" alt="Poster do Serie" class="img-fluid mb-3" />
           <div class="d-flex justify-content-around">
@@ -361,6 +361,12 @@ export default {
   width: 50px;
   height: 50px;
   cursor: pointer;
+}
+
+.visibleMobile {
+  color: #aa0101;
+  font-weight: 600;
+  padding: 0 20px 20px 0;
 }
 
 @media screen and (min-width: 992px) {

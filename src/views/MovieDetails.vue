@@ -362,6 +362,12 @@ export default {
   cursor: pointer;
 }
 
+.visibleMobile {
+  color: #aa0101;
+  font-weight: 600;
+  padding: 0 20px 20px 0;
+}
+
 @media screen and (min-width: 992px) {
   .visibleMobile {
   display: none;

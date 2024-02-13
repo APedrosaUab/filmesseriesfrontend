@@ -51,13 +51,14 @@ export default {
     };
   },
   computed: {
-    isActiveMovies() {
-      return this.$route.matched.some((route) => route.name === 'Movies' || route.path.startsWith('/movies'));
-    },
-    isActiveSeries() {
-      return this.$route.matched.some((route) => route.name === 'Series' || route.path.startsWith('/series'));
-    }
+  isActiveMovies() {
+    return this.$route.path === '/Movies' || this.$route.path.startsWith('/movies/');
   },
+  isActiveSeries() {
+    return this.$route.path === '/Series' || this.$route.path.startsWith('/series/');
+  }
+}
+
   methods: {
     toggleMenu() {
       this.$refs.navbarMenu.classList.toggle('show');
