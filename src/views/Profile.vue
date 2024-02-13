@@ -411,7 +411,7 @@ export default {
     generateStars(avaliacao) {
       let stars = '';
       for (let i = 0; i < 5; i++) {
-        stars += i < avaliacao ? <i class="fas fa-star active"></i> : <i class="fas fa-star notActive"></i>;
+        stars += i < avaliacao ? '<i class="fas fa-star active"></i>' : '<i class="fas fa-star notActive"></i>';
       }
       <i class="fas fa-star active"></i>
       return stars;
