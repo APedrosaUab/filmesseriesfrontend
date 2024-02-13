@@ -411,7 +411,7 @@ export default {
     generateStars(avaliacao) {
       let stars = '';
       for (let i = 0; i < 5; i++) {
-        stars += i < avaliacao ? '<i class="fas fa-star active"></i>' : '<i class="fas fa-star"></i>';
+        stars += i < avaliacao ? '<i class="fas fa-star goldenStyle"></i>' : '<i class="fas fa-star greyStyle"></i>';
       }
       return stars;
     },
@@ -493,7 +493,6 @@ export default {
 
 </script>
 
-
 <style scoped>
 h2 {
   color: rgb(170, 1, 1);
@@ -557,11 +556,11 @@ h4,
   padding: 0;
 }
 
-.fas.fa-star, .fa-star::before {
+.fas.fa-star.greyStyle, .fas.fa-star.greyStyle::before {
   color: lightgray!important;
 }
 
-.fas.fa-star.active, .fa-star.active::before {
+.fas.fa-star.goldenStyle, .fas.fa-star.goldenStyle::before {
   color: gold!important;
 }
 

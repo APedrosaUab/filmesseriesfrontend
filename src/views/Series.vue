@@ -113,4 +113,9 @@ h2 {
 }
 }
 
+@media screen and (max-width: 991px) {
+.img-fluid {
+  max-width: 90%;
+}
+}
 </style>
