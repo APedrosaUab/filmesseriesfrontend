@@ -10,6 +10,8 @@
           <button @click="searchSeries" class="btn btn-series">Pesquisar Série</button>
         </div>
       </div>
+      <div class="row">
+        <div class="col-6">
       <div class="form-group">
         <label for="genreSelectMovies">Género Filme:</label>
         <select id="genreSelectMovies" v-model="selectedGenreMovies" class="form-control">
@@ -18,7 +20,9 @@
           </option>
         </select>
       </div>
-      <button @click="searchByGenreMovies" class="btn btn-primary">Pesquisar Filme</button>
+      <button @click="searchByGenreMovies" class="btn btn-movie">Pesquisar Filme</button>
+    </div>
+    <div class="col-6">
 
       <div class="form-group">
         <label for="genreSelectSeries">Género de Série:</label>
@@ -28,7 +32,9 @@
           </option>
         </select>
       </div>
-      <button @click="searchByGenreSeries" class="btn btn-primary">Pesquisar Série</button>
+      <button @click="searchByGenreSeries" class="btn btn-series">Pesquisar Série</button>
+    </div>
+  </div>
 
       <div class="search-results">
         <div class="search-result-card" v-for="item in searchResults" :key="item.id">
