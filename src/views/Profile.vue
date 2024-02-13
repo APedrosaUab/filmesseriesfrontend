@@ -411,7 +411,7 @@ export default {
     generateStars(avaliacao) {
       let stars = '';
       for (let i = 0; i < 5; i++) {
-        stars += i < avaliacao ? '<i class="fas fa-star goldenStyle"></i>' : '<i class="fas fa-star greyStyle"></i>';
+        stars += i < avaliacao ? '<i class="fas fa-star active" style="color: gold;"></i>' : '<i class="fas fa-star"  style="color: lightgray;"></i>';
       }
       return stars;
     },
@@ -554,14 +554,6 @@ h4,
   font-size: 12px;
   margin: 2px;
   padding: 0;
-}
-
-.fas.fa-star.greyStyle, .fas.fa-star.greyStyle::before {
-  color: lightgray!important;
-}
-
-.fas.fa-star.goldenStyle, .fas.fa-star.goldenStyle::before {
-  color: gold!important;
 }
 
 /* Teste Tabela*/
