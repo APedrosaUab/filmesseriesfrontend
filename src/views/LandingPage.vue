@@ -63,7 +63,6 @@ export default {
           localStorage.setItem('username', loginResponse.data.username);
           localStorage.setItem('id_utilizador', loginResponse.data.id_utilizador);
           localStorage.setItem('avatarUser', loginResponse.data.avatarUser);
-          console.log(loginResponse.data);
           this.$router.push('/home');
         } else {
           this.errorMessage = 'Erro ao tentar fazer login.';
