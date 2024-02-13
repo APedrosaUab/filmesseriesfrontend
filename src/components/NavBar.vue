@@ -30,7 +30,7 @@
           <router-link :class="['nav-link', { 'router-link-active': isActiveMovies }]" to="/Movies">Filmes</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
-          <router-link :class="['nav-link', { 'router-link-active': isActiveSeries }]" to="/Series">Series</router-link>
+          <router-link :class="['nav-link', { 'router-link-active': isActiveSeries }]" to="/Series">Séries</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
           <router-link class="nav-link" to="/Search">Pesquisa</router-link>
@@ -52,10 +52,10 @@ export default {
   },
   computed: {
     isActiveMovies() {
-      return this.$route.path === '/Movies' || this.$route.path.startsWith('/Movies/');
+      return this.$route.matched.some((route) => route.name === 'Movies' || route.path.startsWith('/movies'));
     },
     isActiveSeries() {
-      return this.$route.path === '/Series' || this.$route.path.startsWith('/Series/');
+      return this.$route.matched.some((route) => route.name === 'Series' || route.path.startsWith('/series'));
     }
   },
   methods: {
