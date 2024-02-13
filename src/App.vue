@@ -75,7 +75,7 @@ nav a.router-link-exact-active {
 
 .content {
   width: 100%;
-  max-width: 800px;
+  max-width: 1920px;
 }
 
 .form-floating, .btn {
