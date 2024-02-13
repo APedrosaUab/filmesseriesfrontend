@@ -363,9 +363,8 @@ export default {
 }
 
 .visibleMobile {
-  color: #aa0101;
+  color: #aa0101!important;
   font-weight: 600;
-  padding: 0 20px 20px 0;
 }
 
 @media screen and (min-width: 992px) {

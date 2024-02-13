@@ -97,6 +97,12 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  color: #aa0101;
+  font-weight: 600;
+  padding: 0 20px 20px 0;
+}
+
 .container {
   padding: 20px;
 }
