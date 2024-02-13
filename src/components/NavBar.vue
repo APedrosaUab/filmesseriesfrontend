@@ -27,10 +27,12 @@
           <router-link class="nav-link" to="/Profile">Perfil</router-link>
         </li>
         <li class="nav-item" @click="closeMenu">
-          <router-link :class="['nav-link', { 'router-link-active': isActiveMovies }]" to="/Movies">Filmes</router-link>
+          <router-link class="nav-link" :class="{ 'active': isActiveMoviesOrDetails }" to="/Movies">Filmes</router-link>
+
         </li>
         <li class="nav-item" @click="closeMenu">
-          <router-link :class="['nav-link', { 'router-link-active': isActiveSeries }]" to="/Series">Séries</router-link>
+          <router-link class="nav-link" :class="{ 'active': isActiveSeriesOrDetails }" to="/Series">Séries</router-link>
+
         </li>
         <li class="nav-item" @click="closeMenu">
           <router-link class="nav-link" to="/Search">Pesquisa</router-link>
@@ -51,16 +53,13 @@ export default {
     };
   },
   computed: {
-    isActiveMovies() {
-      const path = this.$route.path.toLowerCase();
-      return path === '/movies' || path.startsWith('/movies/');
+    isActiveMoviesOrDetails() {
+      return ['Movies', 'MovieDetails'].includes(this.$route.name);
     },
-    isActiveSeries() {
-      const path = this.$route.path.toLowerCase();
-      return path === '/series' || path.startsWith('/series/');
+    isActiveSeriesOrDetails() {
+      return ['Series', 'SeriesDetails'].includes(this.$route.name);
     }
   },
-
   methods: {
     toggleMenu() {
       this.$refs.navbarMenu.classList.toggle('show');
