@@ -57,8 +57,8 @@ export default {
       searchTerm: '',
       searchResults: [],
       currentMediaType: '',
-      selectedGenreSeries: '',
-      selectedGenreMovies: '',
+      selectedGenreMovies: 28,
+      selectedGenreSeries: 16,
       genreOptionsMovies: [
         {
           "id": 28,
@@ -388,5 +388,12 @@ export default {
 .labelGenre {
   margin-top: 10px;
   width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .search-container {
+  margin-top: 10px;
+}
+
 }
 </style>
