@@ -101,7 +101,7 @@
         </div>
         <div class="col-12 text-left">
           <h4 class="lightblue">Filmes Vistos</h4>
-          <table v-if="filmesVistos.length" class="table table-striped">
+          <table v-if="filmesVistos.length" class="table table-striped table-custom">
             <thead>
               <tr>
                 <th>Nome</th>
@@ -560,6 +560,53 @@ h4,
   margin: 2px;
   padding: 0;
 }
+
+/* Teste Tabela*/
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-custom thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-custom tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-custom td, .table-custom th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-custom .btnEdActions {
+  margin: 0 5px;
+}
+
+.table-custom .fas {
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.table-custom td:hover {
+  background-color: #ddd;
+}
+
+/* Teste Tabela */
 
 @media screen and (max-width: 991px) {
   .editBtnPrf button {
